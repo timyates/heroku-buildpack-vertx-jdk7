@@ -4,7 +4,7 @@
 # fail fast
 set -e
 
-BIN_DIR=$( cd $( dirname $0 ) && pwd ) # absolute path
+BIN_DIR=$( cd $( dirname $0 ) && /bin/pwd ) # absolute path
 
 # parse args
 BUILD_DIR=$1
@@ -47,7 +47,7 @@ if [ ! -d "$BUILD_DIR/.vertx" ]; then
 
   mv vert* .vertx
   rm '.vertx/bin/vertx.bat'
-  cp ${BIN_DIR}/support/js.jar .vertx/lib/jars/
+  cp ${BIN_DIR}/../support/js.jar .vertx/lib/jars/
   
   cd $BUILD_DIR
   cp -r .vertx $CACHE_DIR/.vertx
