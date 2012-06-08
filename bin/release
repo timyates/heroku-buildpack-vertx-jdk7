@@ -15,6 +15,6 @@ EOF
 if [ ! -f $BUILD_DIR/Procfile ]; then
 cat <<EOF
 default_process_types:
-  web: vertx run server.groovy
+  web: vertx run server.js
 EOF
 fi

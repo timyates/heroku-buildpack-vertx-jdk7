@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # bin/use <build-dir>
 
-if [ -f $1/server.groovy ]; then
+if [ -f $1/server.js ]; then
    echo "Vert.x" && exit 0
 else
   echo "no" && exit 1
