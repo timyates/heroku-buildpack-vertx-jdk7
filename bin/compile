@@ -4,7 +4,8 @@
 # fail fast
 set -e
 
-BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
+BIN_DIR=$( cd $( dirname $0 ) && pwd ) # absolute path
+
 # parse args
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -37,15 +38,20 @@ if [ -d "$CACHE_DIR/.vertx" ]; then
   echo "done"
 fi
 
-VERTX_URL="https://github.com/downloads/purplefox/vert.x/vert.x-1.0.final.tar.gz"
+VERTX_URL="http://vertx.io/downloads/vert.x-1.0.1.final.tar.gz"
 
 if [ ! -d "$BUILD_DIR/.vertx" ]; then
   echo -n "-----> Installing Vert.x build (to .vertx)....."
+
   curl --max-time 320 --location $VERTX_URL | tar xz
+
   mv vert* .vertx
   rm '.vertx/bin/vertx.bat'
+  cp ${BIN_DIR}/support/js.jar .vertx/lib/jars/
+  
   cd $BUILD_DIR
   cp -r .vertx $CACHE_DIR/.vertx
+
   echo " done"
 fi
 
