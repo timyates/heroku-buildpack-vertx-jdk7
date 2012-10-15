@@ -3,6 +3,12 @@
 
 if [ -f $1/server.js ]; then
    echo "Vert.x" && exit 0
+elif [ -f $1/server.java ]; then
+   echo "Vert.x" && exit 0
+elif [ -f $1/server.groovy ]; then
+   echo "Vert.x" && exit 0
+elif [ -f $1/server.rb ]; then
+   echo "Vert.x" && exit 0
 else
   echo "no" && exit 1
 fi
