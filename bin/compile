@@ -66,13 +66,11 @@ fi
 
 if [ ! -d "$BUILD_DIR/.vertx" ]; then
   echo -n "-----> Installing Vert.x build (to .vertx)....."
-
   curl --max-time 320 --location $VERTX_URL | tar xz
-
   mv vert* .vertx
   rm '.vertx/bin/vertx.bat'
 #cp ${BIN_DIR}/../support/js.jar .vertx/lib/jars/
-  cd $BUILD_DIR
+#  cd $BUILD_DIR
   cp -r .vertx $CACHE_DIR/.vertx
 
   echo " done"
