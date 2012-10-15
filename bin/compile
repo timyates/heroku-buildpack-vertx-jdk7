@@ -3,12 +3,16 @@
 
 # fail fast
 set -e
+set -x verbose #echo on
+
 
 BIN_DIR=$( cd $( dirname $0 ) && /bin/pwd ) # absolute path
 
 # parse args
-BUILD_DIR=$1
-CACHE_DIR=$2
+#BUILD_DIR=$1
+#CACHE_DIR=$2
+BUILD_DIR=/tmp/build123
+CACHE_DIR=/tmp/cache
 
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
@@ -47,7 +51,7 @@ if [ ! -d "$BUILD_DIR/.vertx" ]; then
 
   mv vert* .vertx
   rm '.vertx/bin/vertx.bat'
-  cp ${BIN_DIR}/../support/js.jar .vertx/lib/jars/
+#cp ${BIN_DIR}/../support/js.jar .vertx/lib/jars/
   
   cd $BUILD_DIR
   cp -r .vertx $CACHE_DIR/.vertx
@@ -62,5 +66,6 @@ export JAVA_HOME="$BUILD_DIR/.jdk7"
 # Warn if no Procfile is present
 if [ ! -f Procfile ]; then
   echo "-----> No Procfile found. Will use the following default process: "
-  echo "       vertx run server.groovy"
+  echo "       vertx run server.language " 
+  echo "       where language = js/java/groovy/rb" 
 fi
