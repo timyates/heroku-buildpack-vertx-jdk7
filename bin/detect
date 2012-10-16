@@ -3,9 +3,8 @@
 
 # Warn if no Procfile is present
 if [ ! -f Procfile ]; then
-  echo "-----> No Procfile found. Please create a Procfile in the root of your app folder that calls vertx like "
+  echo "-----> No Procfile found. Create a Procfile in the root of your app folder that calls vertx like so:"
   echo "       web: vertx run YourServer.java"
-  echo "no" && exit 1
 else
   echo "Vert.x" && exit 0
 fi
