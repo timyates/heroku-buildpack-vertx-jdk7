@@ -66,8 +66,9 @@ if [ ! -d "$BUILD_DIR/.vertx" ]; then
 fi
 
 #copy the vertx command - not necessary but makes procfiles nicer. :)
-if [ ! -d "$BUILD_DIR/vertx" ]; then
+if [ ! -f "$BUILD_DIR/vertx" ]; then
    cp $BUILD_DIR/.vertx/bin/vertx $BUILD_DIR
+   echo "copied the vertx command to the build dir"
 fi
 
 logger -p user.notice -t "slugc[$$]" "language_pack_java java_compile_end $LOGGER_FLAGS"
